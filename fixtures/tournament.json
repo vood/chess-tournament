@@ -1,0 +1,827 @@
+[
+    {
+        "pk": 1,
+        "model": "tournament.tournament",
+        "fields": {
+            "current_round": 1,
+            "name": "Wargaming Chess Tournament",
+            "rounds_count": 5
+        }
+    },
+    {
+        "pk": 1,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2872,
+            "name": "Magnus Carlsen"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2826,
+            "name": "Levon Aronian"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2787,
+            "name": "Vladimir Kramnik"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2785,
+            "name": "Veselin Topalov"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2781,
+            "name": "Fabiano Caruana"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2777,
+            "name": "Alexander Grischuk"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2776,
+            "name": "Hikaru Nakamura"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2773,
+            "name": "Viswanathan Anand"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2766,
+            "name": "Sergey Karjakin"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2761,
+            "name": "Boris Gelfand"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2758,
+            "name": "Peter Svidler"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 0,
+            "name": "Perez, Dominguez"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2757,
+            "name": "Shakhriyar Mamedyarov"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2754,
+            "name": "Michael Adams"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2746,
+            "name": "Anish Giri"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2745,
+            "name": "Maxime Vachier-Lagrave"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2739,
+            "name": "Vassily Ivanchuk"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2738,
+            "name": "Wesley So"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2738,
+            "name": "Etienne Bacrot"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2737,
+            "name": "Nikita Vitiugov"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2734,
+            "name": "Hao Wang"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2733,
+            "name": "Pavel Eljanov"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2732,
+            "name": "Ian Nepomniachtchi"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2730,
+            "name": "Peter Leko"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2723,
+            "name": "Dmitry Jakovenko"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2723,
+            "name": "Anton Korobov"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2722,
+            "name": "Alexander Morozevich"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2721,
+            "name": "Ruslan Ponomariov"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2717,
+            "name": "Liren Ding"
+        }
+    },
+    {
+        "pk": 30,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2717,
+            "name": "Vladimir Malakhov"
+        }
+    },
+    {
+        "pk": 31,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2717,
+            "name": "Yue Wang"
+        }
+    },
+    {
+        "pk": 32,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2715,
+            "name": "Radoslaw Wojtaszek"
+        }
+    },
+    {
+        "pk": 33,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2715,
+            "name": "Evgeny Tomashevsky"
+        }
+    },
+    {
+        "pk": 34,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2713,
+            "name": "Teimour Radjabov"
+        }
+    },
+    {
+        "pk": 35,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2712,
+            "name": "P. Harikrishna"
+        }
+    },
+    {
+        "pk": 36,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2711,
+            "name": "Alexei Shirov"
+        }
+    },
+    {
+        "pk": 37,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2710,
+            "name": "Alexander Moiseenko"
+        }
+    },
+    {
+        "pk": 38,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 0,
+            "name": "Quang Le"
+        }
+    },
+    {
+        "pk": 39,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2709,
+            "name": "Dmitry Andreikin"
+        }
+    },
+    {
+        "pk": 40,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2709,
+            "name": "Laurent Fressinet"
+        }
+    },
+    {
+        "pk": 41,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2709,
+            "name": "Gata Kamsky"
+        }
+    },
+    {
+        "pk": 42,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2707,
+            "name": "Zoltan Almasi"
+        }
+    },
+    {
+        "pk": 43,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 0,
+            "name": "Pons, Vallejo"
+        }
+    },
+    {
+        "pk": 44,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2706,
+            "name": "Baadur Jobava"
+        }
+    },
+    {
+        "pk": 45,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2706,
+            "name": "Alexander Areshchenko"
+        }
+    },
+    {
+        "pk": 46,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2706,
+            "name": "Sergei Rublevsky"
+        }
+    },
+    {
+        "pk": 47,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2704,
+            "name": "Yuriy Kryvoruchko"
+        }
+    },
+    {
+        "pk": 48,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2702,
+            "name": "Arkadij Naiditsch"
+        }
+    },
+    {
+        "pk": 49,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2702,
+            "name": "David Navara"
+        }
+    },
+    {
+        "pk": 50,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2699,
+            "name": "Xiangzhi Bu"
+        }
+    },
+    {
+        "pk": 51,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2698,
+            "name": "Denis Khismatullin"
+        }
+    },
+    {
+        "pk": 52,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2698,
+            "name": "Ernesto Inarkiev"
+        }
+    },
+    {
+        "pk": 53,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2698,
+            "name": "Rustam Kasimdzhanov"
+        }
+    },
+    {
+        "pk": 54,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2697,
+            "name": "Chao Li"
+        }
+    },
+    {
+        "pk": 55,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2693,
+            "name": "Judit Polgar"
+        }
+    },
+    {
+        "pk": 56,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2691,
+            "name": "Liviu-Dieter Nisipeanu"
+        }
+    },
+    {
+        "pk": 57,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2690,
+            "name": "Maxim Matlakov"
+        }
+    },
+    {
+        "pk": 58,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2689,
+            "name": "Evgeny Alekseev"
+        }
+    },
+    {
+        "pk": 59,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2689,
+            "name": "Alexander Riazantsev"
+        }
+    },
+    {
+        "pk": 60,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 0,
+            "name": "Nigel Short"
+        }
+    },
+    {
+        "pk": 61,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 0,
+            "name": "Luke McShane"
+        }
+    },
+    {
+        "pk": 62,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2682,
+            "name": "Vladimir Akopian"
+        }
+    },
+    {
+        "pk": 63,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2681,
+            "name": "Viktor Laznicka"
+        }
+    },
+    {
+        "pk": 64,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2680,
+            "name": "Maxim Rodshtein"
+        }
+    },
+    {
+        "pk": 65,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2680,
+            "name": "Ferenc Berkes"
+        }
+    },
+    {
+        "pk": 66,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 0,
+            "name": "Zuniga, Granda"
+        }
+    },
+    {
+        "pk": 67,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2679,
+            "name": "Richard Rapport"
+        }
+    },
+    {
+        "pk": 68,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 0,
+            "name": "Wely, Van"
+        }
+    },
+    {
+        "pk": 69,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2679,
+            "name": "Alexander Onischuk"
+        }
+    },
+    {
+        "pk": 70,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2679,
+            "name": "Andrei Volokitin"
+        }
+    },
+    {
+        "pk": 71,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2677,
+            "name": "Sergei Movsesian"
+        }
+    },
+    {
+        "pk": 72,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 0,
+            "name": "Batista, Bruzon"
+        }
+    },
+    {
+        "pk": 73,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2676,
+            "name": "Krishnan Sasikiran"
+        }
+    },
+    {
+        "pk": 74,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2673,
+            "name": "Aleksey Dreev"
+        }
+    },
+    {
+        "pk": 75,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2672,
+            "name": "Ivan Cheparinov"
+        }
+    },
+    {
+        "pk": 76,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2671,
+            "name": "Andrei Istratescu"
+        }
+    },
+    {
+        "pk": 77,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2671,
+            "name": "Gabriel Sargissian"
+        }
+    },
+    {
+        "pk": 78,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2669,
+            "name": "Boris Grachev"
+        }
+    },
+    {
+        "pk": 79,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2665,
+            "name": "Bassem Amin"
+        }
+    },
+    {
+        "pk": 80,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2664,
+            "name": "Yangyi Yu"
+        }
+    },
+    {
+        "pk": 81,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2663,
+            "name": "Bartosz Socko"
+        }
+    },
+    {
+        "pk": 82,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2663,
+            "name": "Emil Sutovsky"
+        }
+    },
+    {
+        "pk": 83,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2661,
+            "name": "Ivan Saric"
+        }
+    },
+    {
+        "pk": 84,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2661,
+            "name": "Sergei Zhigalko"
+        }
+    },
+    {
+        "pk": 85,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2661,
+            "name": "Romain Edouard"
+        }
+    },
+    {
+        "pk": 86,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2661,
+            "name": "Viktor Bologan"
+        }
+    },
+    {
+        "pk": 87,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2659,
+            "name": "Rauf Mamedov"
+        }
+    },
+    {
+        "pk": 88,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2658,
+            "name": "Aleksandr Shimanov"
+        }
+    },
+    {
+        "pk": 89,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2658,
+            "name": "Hua Ni"
+        }
+    },
+    {
+        "pk": 90,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2657,
+            "name": "Sanan Sjugirov"
+        }
+    },
+    {
+        "pk": 91,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2657,
+            "name": "Kiril Georgiev"
+        }
+    },
+    {
+        "pk": 92,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2656,
+            "name": "Viktor Erdos"
+        }
+    },
+    {
+        "pk": 93,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2656,
+            "name": "Luka Lenic"
+        }
+    },
+    {
+        "pk": 94,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2655,
+            "name": "Igor Lysyj"
+        }
+    },
+    {
+        "pk": 95,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2655,
+            "name": "Mikheil Mchedlishvili"
+        }
+    },
+    {
+        "pk": 96,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2655,
+            "name": "Tigran Gharamian"
+        }
+    },
+    {
+        "pk": 97,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2655,
+            "name": "Zahar Efimenko"
+        }
+    },
+    {
+        "pk": 98,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2654,
+            "name": "Csaba Balogh"
+        }
+    },
+    {
+        "pk": 99,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2654,
+            "name": "Alexander Motylev"
+        }
+    },
+    {
+        "pk": 100,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2653,
+            "name": "Ivan Popov"
+        }
+    },
+    {
+        "pk": 101,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2653,
+            "name": "Evgeny Romanov"
+        }
+    },
+    {
+        "pk": 102,
+        "model": "tournament.player",
+        "fields": {
+            "rating": 2653,
+            "name": "Vadim Zvjaginsev"
+        }
+    }
+]

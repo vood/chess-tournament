@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+{% if tournament %}
+    {% for round, games in tournament.rounds %}
+        <table border="1">
+            <thead>
+            <tr>
+                <th colspan="5">{{ round }} тур</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for game in games %}
+                <tr>
+                    <td>{{ game.player1 }}</td>
+                    <td>{{ game.player1_total }}</td>
+                    <td>{{ game.score }} </td>
+                    <td>{{ game.player2_total }}</td>
+                    <td>{{ game.player2 }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    {% endfor %}
+{% else %}
+    <p>Турнир не найден</p>
+{% endif %}
