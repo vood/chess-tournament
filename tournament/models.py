@@ -1,5 +1,5 @@
-from django.db import models
-from django.db.models import Sum
+from django.db import models, connection
+from django.db.models import Sum, Q
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
@@ -16,17 +16,56 @@ class Tournament(models.Model):
         count = Player.objects.count()
         if (self.current_round == self.rounds_count or count < 2):
             return
+        games = self.game_set.filter(round=self.current_round, is_rated=False).all()
+        for game in games:
+            game.rate_players()
+
+        games.update(is_rated=True)
+
+        self._update_stats()
+
         self.current_round += 1
-        players = Player.objects.order_by('-rating')
+
+        if (self.current_round == 1):
+            players = Player.objects.all()
+        else:
+            players = Player.objects \
+                .filter(stats__game__tournament=self, stats__game__round__lt=self.current_round) \
+                .annotate(total=Sum("stats__score")) \
+                .order_by('-total', '-rating')
+
         i = 0
-        while i < count:
-            game = Game.objects.create(tournament=self, round=self.current_round)
-            if players[i + 1]:
-                Competitor.objects.create(player=players[i], game=game, colour=True)
-                Competitor.objects.create(player=players[i + 1], game=game, colour=False)
-            else:
-                Competitor.objects.create(player=players[i], score=1, game=game, colour=True)
-            i += 2
+
+        games = map(lambda x: (x.player_white_id, x.player_black_id), list(self.game_set.all()))
+        sorted = []
+
+        for player1 in players:
+            if player1.id in sorted:
+                continue
+            game = Game()
+            game.tournament = self
+            game.round = self.current_round
+            for player2 in players:
+                if player2.id in sorted or player1.id == player2.id:
+                    continue
+                if ((player1.id, player2.id) in games) == False:
+                    game.player_white = player1
+                    game.player_black = player2
+                    game.save()
+                    games.append((player1.id, player2.id))
+                    sorted.append(player1.id)
+                    sorted.append(player2.id)
+                    break
+                elif ((player2.id, player1.id) in games) == False:
+                    game.player_white = player2
+                    game.player_black = player1
+                    games.append((player2.id, player1.id))
+                    game.save()
+                    sorted.append(player1.id)
+                    sorted.append(player2.id)
+                    break
+
+
         super(Tournament, self).save()
 
     def save(self, force_insert=False, force_update=False, using=None):
@@ -43,10 +82,43 @@ class Tournament(models.Model):
         return [(round, list(games)) for round, games in g]
 
     def validate_current_round(self):
-        return self.game_set.filter(competitor__score__isnull=True).count() == 0
+        return self.game_set.filter(score__isnull=True).count() == 0
 
     def __unicode__(self):
         return self.name
+
+    def _update_stats(self):
+        sql = '''
+INSERT INTO tournament_stats (game_id, player_id, score) SELECT id, player_white_id, 1 FROM tournament_game WHERE round = %d AND tournament_id = %d AND score = 3;
+INSERT INTO tournament_stats (game_id, player_id, score) SELECT id, player_black_id, 1 FROM tournament_game WHERE round = %d AND tournament_id = %d AND score = 2;
+INSERT INTO tournament_stats (game_id, player_id, score) SELECT id, player_white_id, 0.5 FROM tournament_game WHERE round = %d AND tournament_id = %d AND score = 1;
+INSERT INTO tournament_stats (game_id, player_id, score) SELECT id, player_black_id, 0.5 FROM tournament_game WHERE round = %d AND tournament_id = %d AND score = 1;
+INSERT INTO tournament_stats (game_id, player_id, score) SELECT id, player_white_id, 0 FROM tournament_game WHERE round = %d AND tournament_id = %d AND score = 2;
+INSERT INTO tournament_stats (game_id, player_id, score) SELECT id, player_black_id, 0 FROM tournament_game WHERE round = %d AND tournament_id = %d AND score = 3;
+        ''' % (
+            self.current_round,
+            self.id,
+            self.current_round,
+            self.id,
+            self.current_round,
+            self.id,
+            self.current_round,
+            self.id,
+            self.current_round,
+            self.id,
+            self.current_round,
+            self.id)
+        cursor = connection.cursor()
+        cursor.execute(sql)
+
+    def results(self):
+        return Player.objects \
+                .filter(stats__game__tournament=self) \
+                .annotate(total=Sum("stats__score")) \
+                .order_by('-total', '-rating')
+
+    def rounds_list(self):
+        return range(1, self.rounds_count)
 
 
 class Player(models.Model):
@@ -56,60 +128,73 @@ class Player(models.Model):
     def __unicode__(self):
         return self.name
 
+    def update_rating(self, competitor_rating, score):
+        ea = 1 / (1 + math.pow(10, (self.rating - competitor_rating) / 400))
+        self.rating = round(self.rating + self._get_k(self.rating) * (score - ea))
+        self.save()
+
+    def _get_k(self, rating):
+        k = 0
+        if rating >= 2400:
+            k = 10
+        elif rating >= 30:
+            k = 15
+        else:
+            k = 30
+        return k
+
+    class Meta:
+        ordering = ('-rating',)
+
 
 class Game(models.Model):
+    SCORES = (
+        (3, "Won-Lost (1:0)"),
+        (2, "Lost-Won (0:1)"),
+        (1, "Tie (0.5:0.5)")
+    )
+
+    is_rated = models.BooleanField(default=False)
     round = models.PositiveIntegerField()
     tournament = models.ForeignKey("Tournament")
-    players = models.ManyToManyField("Player", through="Competitor")
+    score = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(3)], null=True, choices=SCORES)
+    player_white = models.ForeignKey("Player", related_name="white_games")
+    player_black = models.ForeignKey("Player", related_name="black_games")
 
     class Meta:
         ordering = ('round',)
 
     def __unicode__(self):
-        return "Round #%d (%s vs %s)" % (self.round, self.player1(), self.player2())
+        return "Round #%d (%s vs %s)" % (self.round, self.player_white, self.player_black)
 
-    def player1(self):
-        return self.players.all()[0]
+    def rate_players(self):
+        if self.is_rated == False:
+            rating1 = self.player_white.rating
+            rating2 = self.player_black.rating
 
-    def player2(self):
-        return self.players.all()[1]
+            self.player_white.update_rating(rating2, self.score_black())
+            self.player_black.update_rating(rating1, self.score_white())
 
-    def score(self):
-        items = list(self.competitor_set.all())
-        return ':'.join(map(lambda x: str(x.score), items))
+    def score_black(self):
+        if self.score == 3:
+            return 0
+        elif self.score == 2:
+            return 1
+        else:
+            return 0.5
 
-    def player1_total(self):
-        return self.competitor_set.all()[0].total
-
-    def player2_total(self):
-        return self.competitor_set.all()[1].total
-
-class Competitor(models.Model):
-    COLOURS = (
-        (True, 'White'),
-        (False, 'Black')
-    )
-    SCORES = (
-        (0.0, "Lost"),
-        (1.0, "Won"),
-        (0.5, "Tie")
-    )
-
-    def __unicode__(self):
-        return self.player
-
-    def save(self, force_insert=False, force_update=False, using=None):
-        self.total = Competitor.objects.filter(player=self.player, game__tournament=self.game.tournament,
-                                               game__round__lt=self.game.round).aggregate(
-            total=Sum('score'))['total']
-        if self.total == None:
-            self.total = 0
-        super(Competitor, self).save(force_insert, force_update, using)
+    def score_white(self):
+        if self.score == 3:
+            return 1
+        elif self.score == 2:
+            return 0
+        else:
+            return 0.5
 
 
+class Stats(models.Model):
     player = models.ForeignKey("Player")
     game = models.ForeignKey("Game")
-    colour = models.BooleanField(choices=COLOURS, default=True)
-    score = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(1)], null=True, choices=SCORES)
-    total = models.FloatField(validators=[MinValueValidator(0)], default=0)
+    score = models.FloatField(validators=[MinValueValidator(0)], default=0)
+
 

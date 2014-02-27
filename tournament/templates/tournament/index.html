@@ -1,11 +1,28 @@
-{% load staticfiles %}
+{% extends 'layout.html' %}
+{% block title %}Турниры{% endblock %}
+{% block content %}
+    <ol class="breadcrumb">
+        <li class="active">Турниры</li>
+    </ol>
 
-{% if tournament_list %}
-    <ul>
-    {% for tournament in tournament_list %}
-        <li><a href="/tournament/{{ tournament.id }}/">{{ tournament.name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No tournaments are available.</p>
-{% endif %}
+    {% if tournament_list %}
+        <table class="table table-striped">
+            <thead>
+            <th>Название</th>
+            <th>Текущий тур</th>
+            <th>Всего туров</th>
+            </thead>
+            <tbody>
+            {% for tournament in tournament_list %}
+                <tr>
+                    <td><a href="/tournament/{{ tournament.id }}/">{{ tournament.name }}</a></td>
+                    <td>{{ tournament.current_round }}</td>
+                    <td>{{ tournament.rounds_count }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Турниры не найдены</p>
+    {% endif %}
+{% endblock %}

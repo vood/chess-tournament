@@ -15,4 +15,4 @@ class DetailView(generic.DetailView):
     template_name = 'tournament/detail.html'
 
     def get_queryset(self):
-        return Tournament.objects.all().prefetch_related('game_set__competitor_set', 'game_set__players')
+        return Tournament.objects.all().prefetch_related('game_set__player_white', 'game_set__player_black')

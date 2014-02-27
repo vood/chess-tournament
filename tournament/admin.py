@@ -3,22 +3,17 @@ from django.contrib import admin
 from tournament.models import Player
 from tournament.models import Game
 from tournament.models import Tournament
-from tournament.models import Competitor
 from django.conf.urls import patterns, url
 from django.contrib import messages
 from django.db import transaction
 
-class CompetitorInline(admin.StackedInline):
-    model = Competitor
-    extra = 0
-    max_num = 2
-    readonly_fields = ('player', 'colour', 'total')
-
 
 class GameAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'tournament', 'score')
-    inlines = [CompetitorInline]
     readonly_fields = ('tournament', 'round')
+
+    def get_queryset(self, request):
+        return Game.objects.all().prefetch_related('tournament', 'player_white', 'player_black')
 
 
 class TournamentAdmin(admin.ModelAdmin):
@@ -53,7 +48,9 @@ class TournamentAdmin(admin.ModelAdmin):
     seed_next_round_column.allow_tags = True
     seed_next_round_column.short_description = 'Actions'
 
+class PlayerAdmin(admin.ModelAdmin):
+    list_display = ('name', 'id', 'rating')
 
-admin.site.register(Player)
+admin.site.register(Player, PlayerAdmin)
 admin.site.register(Tournament, TournamentAdmin)
 admin.site.register(Game, GameAdmin)

@@ -3,7 +3,7 @@
         "pk": 1,
         "model": "tournament.tournament",
         "fields": {
-            "current_round": 1,
+            "current_round": 0,
             "name": "Wargaming Chess Tournament",
             "rounds_count": 5
         }
@@ -100,8 +100,8 @@
         "pk": 12,
         "model": "tournament.player",
         "fields": {
-            "rating": 0,
-            "name": "Perez, Dominguez"
+            "rating": 2757,
+            "name": "Leinier Dominguez Perez"
         }
     },
     {
@@ -308,8 +308,8 @@
         "pk": 38,
         "model": "tournament.player",
         "fields": {
-            "rating": 0,
-            "name": "Quang Le"
+            "rating": 2709,
+            "name": "Quang Liem Le"
         }
     },
     {
@@ -348,8 +348,8 @@
         "pk": 43,
         "model": "tournament.player",
         "fields": {
-            "rating": 0,
-            "name": "Pons, Vallejo"
+            "rating": 2707,
+            "name": "Francisco Vallejo Pons"
         }
     },
     {
@@ -484,16 +484,16 @@
         "pk": 60,
         "model": "tournament.player",
         "fields": {
-            "rating": 0,
-            "name": "Nigel Short"
+            "rating": 2686,
+            "name": "Nigel D Short"
         }
     },
     {
         "pk": 61,
         "model": "tournament.player",
         "fields": {
-            "rating": 0,
-            "name": "Luke McShane"
+            "rating": 2684,
+            "name": "Luke J McShane"
         }
     },
     {
@@ -532,8 +532,8 @@
         "pk": 66,
         "model": "tournament.player",
         "fields": {
-            "rating": 0,
-            "name": "Zuniga, Granda"
+            "rating": 2680,
+            "name": "Julio E Granda Zuniga"
         }
     },
     {
@@ -548,8 +548,8 @@
         "pk": 68,
         "model": "tournament.player",
         "fields": {
-            "rating": 0,
-            "name": "Wely, Van"
+            "rating": 2679,
+            "name": "Loek Van Wely"
         }
     },
     {
@@ -580,8 +580,8 @@
         "pk": 72,
         "model": "tournament.player",
         "fields": {
-            "rating": 0,
-            "name": "Batista, Bruzon"
+            "rating": 2676,
+            "name": "Lazaro Bruzon Batista"
         }
     },
     {

@@ -1,27 +1,69 @@
-{% load staticfiles %}
+{% extends 'layout.html' %}
+{% block title %}{{ tournament }} - Турнир{% endblock %}
+{% block content %}
+    <ol class="breadcrumb">
+      <li><a href="/">Турниры</a></li>
+      <li class="active">{{ tournament.name }}</li>
+    </ol>
 
-{% if tournament %}
-    {% for round, games in tournament.rounds %}
-        <table border="1">
-            <thead>
-            <tr>
-                <th colspan="5">{{ round }} тур</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for game in games %}
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="nav nav-tabs">
+                {% for round in tournament.rounds_list %}
+                    {% if tournament.current_round >= round %}
+                        <li{% if tournament.current_round = round %} class="active"{% endif %}><a
+                                href="#round{{ round }}"
+                                data-toggle="tab">Тур {{ round }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <div class="tab-content">
+                {% for round, games in tournament.rounds %}
+                    <div class="tab-pane{% if tournament.current_round = round %} active{% endif %}"
+                         id="round{{ round }}">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Белые</th>
+                                <th>Результат</th>
+                                <th>Черные</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for game in games %}
+                                <tr>
+                                    <td>{{ game.player_white }}</td>
+                                    <td>{{ game.get_score_display }} </td>
+                                    <td>{{ game.player_black }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Текущие результаты</h4>
+            <table class="table table-striped">
+                <thead>
                 <tr>
-                    <td>{{ game.player1 }}</td>
-                    <td>{{ game.player1_total }}</td>
-                    <td>{{ game.score }} </td>
-                    <td>{{ game.player2_total }}</td>
-                    <td>{{ game.player2 }}</td>
+                    <th>Игрок</th>
+                    <th>Очки</th>
+                    <th>Рейтинг</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-
-        </table>
-    {% endfor %}
-{% else %}
-    <p>Турнир не найден</p>
-{% endif %}
+                </thead>
+                <tbody>
+                {% for player in tournament.results %}
+                    <tr>
+                        <td>{{ player.name }}</td>
+                        <td>{{ player.total }} </td>
+                        <td>{{ player.rating }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
