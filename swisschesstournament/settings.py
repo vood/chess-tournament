@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -52,21 +53,6 @@ ROOT_URLCONF = 'swisschesstournament.urls'
 
 WSGI_APPLICATION = 'swisschesstournament.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tournament',
-        'USER': 'root',
-        'PASSWORD': 'v99d99',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -86,7 +72,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 LOGGING = {
     'disable_existing_loggers': False,
     'version': 1,
@@ -94,7 +79,7 @@ LOGGING = {
         'console': {
             # logging handler that outputs log messages to terminal
             'class': 'logging.StreamHandler',
-            'level': 'DEBUG', # message level to be written to console
+            'level': 'DEBUG',  # message level to be written to console
         },
     },
     'loggers': {
@@ -104,11 +89,33 @@ LOGGING = {
             # root level logger.
             'handlers': ['console'],
             'level': 'DEBUG',
-            'propagate': False, # this tells logger to send logging message
-                                # to its parent (will send if set to True)
+            'propagate': False,  # this tells logger to send logging message
+            # to its parent (will send if set to True)
         },
         'django.db': {
             # django also has database level logging
         },
     },
 }
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+
+DATABASES['default'] = dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
