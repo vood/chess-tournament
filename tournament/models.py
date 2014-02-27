@@ -118,7 +118,7 @@ INSERT INTO tournament_stats (game_id, player_id, score) SELECT id, player_black
                 .order_by('-total', '-rating')
 
     def rounds_list(self):
-        return range(1, self.rounds_count)
+        return range(1, self.rounds_count + 1)
 
 
 class Player(models.Model):
