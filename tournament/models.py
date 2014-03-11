@@ -75,7 +75,11 @@ class Tournament(models.Model):
 
     def _calculate_number_of_rounds(self):
         count = Player.objects.count()
-        return round(math.sqrt(count + 2 * (count - 1)))
+
+        if count == 0:
+            return 0
+        else:
+            return round(math.sqrt(count + 2 * (count - 1)))
 
     def rounds(self):
         g = itertools.groupby(list(self.game_set.all()), lambda x: x.round)
