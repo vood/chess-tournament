@@ -1,13 +1,31 @@
-Тестовое задание для компании Wargaming
-=======================================
 
-Демо версию можно посмотреть здесь: http://wargaming-tournament.herokuapp.com/
+Swiss-system Chess Tournament Manager
+=====================================
 
-Логин/пароль: admin/password
+Purpose
+-------
+This application is inteded to show my python and django skills.
 
-Демо версия уже содержит определенный набор данных таких как игроки, начатый и начатый турнир.
+What is swiss-system tournament (Wiki)
+--------------------------------------
+A Swiss-system tournament is a non-elimination tournament format designed to award the team which perform best when matched with opponents of similar skill.
+It involves several rounds of competition where the winners are the players with the highest aggregate of points earned from all rounds.
+Players meet one-to-one in each round and are paired using a predetermined formula (though they may be paired by randomly in the first round or in pre-determined rounds). The first tournament of this type was a chess tournament in Zurich in 1895, hence the name "Swiss system".
+
+Demo
+----
+The demo app is located here: http://wargaming-tournament.herokuapp.com/
+
+Login/password: admin/password
+
+Russian version
+===============
+
+Демо
+----
+
 Для рассчета следующего тура турнира:
-  1. зайдите в админку по адресу http://wargaming-tournament.herokuapp.com/admin
+  1. Зайдите в админку по адресу http://wargaming-tournament.herokuapp.com/admin
   2. Выберите Tournaments
   3. Кликните Seed next round напротив записи Wargaming Chess Tournament. Для того, чтобы следующий тур успешно рассчитался нужно сначала выставить результаты всех игр в предыдущем. В демо данных это уже сделано за вас.
 
