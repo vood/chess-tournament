@@ -1,16 +1,16 @@
 {% extends 'layout.html' %}
-{% block title %}Турниры{% endblock %}
+{% block title %}{% trans 'Tournaments' %}{% endblock %}
 {% block content %}
     <ol class="breadcrumb">
-        <li class="active">Турниры</li>
+        <li class="active">{% trans 'Tournaments' %}</li>
     </ol>
 
     {% if tournament_list %}
         <table class="table table-striped">
             <thead>
-            <th>Название</th>
-            <th>Текущий тур</th>
-            <th>Всего туров</th>
+            <th>{% trans 'Tournament name' %}</th>
+            <th>{% trans 'Current round' %}</th>
+            <th>{% trans 'Total rounds' %}</th>
             </thead>
             <tbody>
             {% for tournament in tournament_list %}
@@ -23,6 +23,6 @@
             </tbody>
         </table>
     {% else %}
-        <p>Турниры не найдены</p>
+        <p>{% trans 'There are no tournaments' %}</p>
     {% endif %}
 {% endblock %}

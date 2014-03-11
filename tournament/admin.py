@@ -6,6 +6,7 @@ from tournament.models import Tournament
 from django.conf.urls import patterns, url
 from django.contrib import messages
 from django.db import transaction
+from django.utils.translation import ugettext as _
 
 
 class GameAdmin(admin.ModelAdmin):
@@ -32,21 +33,21 @@ class TournamentAdmin(admin.ModelAdmin):
         tournament = Tournament.objects.get(pk=request.POST['id'])
         if (tournament.validate_current_round()):
             tournament.seed_next_round()
-            messages.success(request, 'New round has been seeded successfully.')
+            messages.success(request, _('New round has been seeded successfully.'))
         else:
-            messages.error(request, 'You can\'t seed new round. Make sure previous one has finished.')
+            messages.error(request, _('You can\'t seed new round. Make sure previous one has finished.'))
 
         return HttpResponse()
 
     def seed_next_round_column(self, obj):
         if obj.current_round == obj.rounds_count:
-            return 'Tournament completed'
+            return _('Tournament completed')
         else:
-            return '<a href="#" onclick="django.jQuery.post(\'seed_next_round/\', { id: %d, csrfmiddlewaretoken: document.forms[\'changelist-form\'].csrfmiddlewaretoken.value }, function() { location.reload() });">Seed next round</a>' % (
-                obj.id)
+            return '<a href="#" onclick="django.jQuery.post(\'seed_next_round/\', { id: %d, csrfmiddlewaretoken: document.forms[\'changelist-form\'].csrfmiddlewaretoken.value }, function() { location.reload() });">%s</a>' % (
+                obj.id, _("Seed next round"))
 
     seed_next_round_column.allow_tags = True
-    seed_next_round_column.short_description = 'Actions'
+    seed_next_round_column.short_description = _('Actions')
 
 class PlayerAdmin(admin.ModelAdmin):
     list_display = ('name', 'id', 'rating')

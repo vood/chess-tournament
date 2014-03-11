@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-11 07:31+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tournament/admin.py:36
+msgid "New round has been seeded successfully."
+msgstr "Следующий тур посеян"
+
+#: tournament/admin.py:38
+msgid "You can't seed new round. Make sure previous one has finished."
+msgstr "Вы не можете посеять следующий тур. Убедитесь что предыдущий тур завершен."
+
+#: tournament/admin.py:44
+msgid "Tournament completed"
+msgstr "Турнир завершен"
+
+#: tournament/admin.py:47
+msgid "Seed next round"
+msgstr "Посеять следующий тур"
+
+#: tournament/admin.py:50
+msgid "Actions"
+msgstr "Действия"
+
+#: tournament/models.py:153
+msgid "Won-Lost (1:0)"
+msgstr "Победа-Проигрыш (1:0)"
+
+#: tournament/models.py:154
+msgid "Lost-Won (0:1)"
+msgstr "Проигрыш-Победа (0:1)"
+
+#: tournament/models.py:155
+msgid "Tie (0.5:0.5)"
+msgstr "Ничья (0.5:0.5)"
+
+#: tournament/models.py:169
+#, python-format
+msgid "Round #%d (%s vs %s)"
+msgstr "Тур #%d (%s против %s)"
+
+#: tournament/templates/tournament/detail.html:2
+msgid "Tournament"
+msgstr "Турнир"
+
+#: tournament/templates/tournament/detail.html:5
+#: tournament/templates/tournament/index.html:2
+#: tournament/templates/tournament/index.html:5
+msgid "Tournaments"
+msgstr "Турниры"
+
+#: tournament/templates/tournament/detail.html:16
+msgid "Round"
+msgstr "Тур"
+
+#: tournament/templates/tournament/detail.html:28
+msgid "White"
+msgstr "Белые"
+
+#: tournament/templates/tournament/detail.html:29
+#: tournament/templates/tournament/detail.html:53
+msgid "Score"
+msgstr "Очки"
+
+#: tournament/templates/tournament/detail.html:30
+msgid "Black"
+msgstr "Черные"
+
+#: tournament/templates/tournament/detail.html:48
+msgid "Scoreboard"
+msgstr "Текущие результаты"
+
+#: tournament/templates/tournament/detail.html:52
+msgid "Player"
+msgstr "Игрок"
+
+#: tournament/templates/tournament/detail.html:54
+msgid "Elo Rating"
+msgstr "Рейтинг Эло"
+
+#: tournament/templates/tournament/index.html:11
+msgid "Tournament name"
+msgstr "Название турнира"
+
+#: tournament/templates/tournament/index.html:12
+msgid "Current round"
+msgstr "Текущий тур"
+
+#: tournament/templates/tournament/index.html:13
+msgid "Total rounds"
+msgstr "Всего туров"
+
+#: tournament/templates/tournament/index.html:26
+msgid "There are no tournaments"
+msgstr "Турниры не найдены"

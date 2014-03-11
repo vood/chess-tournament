@@ -3,6 +3,7 @@ from django.db.models import Sum, Q
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from django.utils.translation import ugettext as _
 import itertools
 import math
 
@@ -149,9 +150,9 @@ class Player(models.Model):
 
 class Game(models.Model):
     SCORES = (
-        (3, "Won-Lost (1:0)"),
-        (2, "Lost-Won (0:1)"),
-        (1, "Tie (0.5:0.5)")
+        (3, _("Won-Lost (1:0)")),
+        (2, _("Lost-Won (0:1)")),
+        (1, _("Tie (0.5:0.5)"))
     )
 
     is_rated = models.BooleanField(default=False)
@@ -165,7 +166,7 @@ class Game(models.Model):
         ordering = ('round',)
 
     def __unicode__(self):
-        return "Round #%d (%s vs %s)" % (self.round, self.player_white, self.player_black)
+        return _("Round #%d (%s vs %s)") % (self.round, self.player_white, self.player_black)
 
     def rate_players(self):
         if self.is_rated == False:

@@ -1,8 +1,8 @@
 {% extends 'layout.html' %}
-{% block title %}{{ tournament }} - Турнир{% endblock %}
+{% block title %}{{ tournament }} - {% trans 'Tournament' %}{% endblock %}
 {% block content %}
     <ol class="breadcrumb">
-      <li><a href="/">Турниры</a></li>
+      <li><a href="/">{% trans 'Tournaments' %}</a></li>
       <li class="active">{{ tournament.name }}</li>
     </ol>
 
@@ -13,7 +13,7 @@
                     {% if tournament.current_round >= round %}
                         <li{% if tournament.current_round = round %} class="active"{% endif %}><a
                                 href="#round{{ round }}"
-                                data-toggle="tab">Тур {{ round }}</a>
+                                data-toggle="tab">{%  trans 'Round' %} {{ round }}</a>
                         </li>
                     {% endif %}
                 {% endfor %}
@@ -25,9 +25,9 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>Белые</th>
-                                <th>Результат</th>
-                                <th>Черные</th>
+                                <th>{% trans 'White' %}</th>
+                                <th>{% trans 'Score' %}</th>
+                                <th>{% trans 'Black' %}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -45,13 +45,13 @@
             </div>
         </div>
         <div class="col-md-4">
-            <h4>Текущие результаты</h4>
+            <h4>{% trans 'Scoreboard' %}</h4>
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Игрок</th>
-                    <th>Очки</th>
-                    <th>Рейтинг</th>
+                    <th>{% trans 'Player' %}</th>
+                    <th>{% trans 'Score' %}</th>
+                    <th>{% trans 'Elo Rating' %}</th>
                 </tr>
                 </thead>
                 <tbody>
