@@ -1,6 +1,5 @@
-
-Swiss-system Chess Tournament Manager
-=====================================
+Swiss-system Chess Tournament
+=============================
 
 Purpose
 -------
