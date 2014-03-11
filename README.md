@@ -1,5 +1,6 @@
 Swiss-system Chess Tournament
 =============================
+[![Build Status](https://travis-ci.org/vood/chess-tournament.png?branch=master)](https://travis-ci.org/vood/chess-tournament)
 
 Purpose
 -------
